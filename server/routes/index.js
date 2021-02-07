@@ -1,9 +1,12 @@
-const express = require('express');
-const router = express.Router();
+const baseRouter = require('express').Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+// load routers
+const authRouter = require('./auth');
+const adminRouter = require('./admin');
+
+// define routes
+baseRouter.use('/auth', authRouter);
+baseRouter.use('/api', apiRouter);
+baseRouter.use('/admin', adminRouter);
 
 module.exports = router;
